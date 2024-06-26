@@ -246,6 +246,10 @@
                 <source>label.summary</source>
                 <target>Summary</target>
             </trans-unit>
+               <trans-unit id="label.isvisible">
+                    <source>label.isvisible</source>
+                    <target>Is visible ?</target>
+                </trans-unit>
             <trans-unit id="label.published_at">
                 <source>label.published_at</source>
                 <target>Published at</target>
@@ -481,6 +485,22 @@
             <trans-unit id="instructions.question3.details">
                 <source>instructions.question3.details</source>
                 <target><![CDATA[<ul><li>In the form for creating a new article <strong>(/admin/post/new)</strong>, add a checkbox "Article visible only to administrators".</li><li>In the list of <strong>(/blog/)</strong> articles, if you are not logged in or do not have an administrator profile, do not display administrator articles.</li><li>Ensure that an administrator article cannot be accessed by entering the address to access it directly <strong>(/blog/posts/{article_slug})</strong>.</li></ul>]]></target>
+            </trans-unit>
+             <trans-unit id="label.create_user">
+                <source>label.create_user</source>
+                <target>Create new user</target>
+            </trans-unit>
+               <trans-unit id="title.users_list">
+                <source>title.users_list</source>
+                <target>List users</target>
+            </trans-unit>
+            <trans-unit id="user.create">
+                <source>user.create</source>
+                <target>Create user</target>
+            </trans-unit>
+            <trans-unit id="label.visible">
+                <source>label.visible</source>
+                <target>Article visible only to administrators.</target>
             </trans-unit>
         </body>
     </file>

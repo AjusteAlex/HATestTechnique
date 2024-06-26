@@ -153,6 +153,10 @@
                 <source>action.create_post</source>
                 <target>Créer un nouvel article</target>
             </trans-unit>
+             <trans-unit id="label.create_user">
+                <source>label.create_user</source>
+                <target>Créer un nouvel utilisateur</target>
+            </trans-unit>
             <trans-unit id="label.save_and_create_new">
                 <source>label.save_and_create_new</source>
                 <target>Enregistrer et créer un nouveau</target>
@@ -245,6 +249,10 @@
             <trans-unit id="label.summary">
                 <source>label.summary</source>
                 <target>Résumé</target>
+            </trans-unit>
+           <trans-unit id="label.isvisible">
+                <source>label.isvisible</source>
+                <target>Post visible ?</target>
             </trans-unit>
             <trans-unit id="label.published_at">
                 <source>label.published_at</source>
@@ -477,6 +485,18 @@
             <trans-unit id="instructions.question3.details">
                 <source>instructions.question3.details</source>
                 <target><![CDATA[<ul><li>Dans le formulaire de création d'un nouvel article <strong>(/admin/post/new)</strong>, ajouter une case à cochée "Article visible uniquement par les administrateurs".</li><li>Dans la liste des articles <strong>(/blog/)</strong>, si l'on n'est pas connecté ou si l'on ne dispose pas d'un profil administrateur, ne pas afficher les articles administrateurs.</li><li>S'assurer que l'on ne puisse pas accéder à un article administrateur en saisissant l'adresse pour y accéder directement <strong>(/blog/posts/{article_slug})</strong>.</li></ul>]]></target>
+            </trans-unit>
+          <trans-unit id="title.users_list">
+            <source>title.users_list</source>
+            <target>Listes des utilisateurs</target>
+        </trans-unit>
+             <trans-unit id="user.create">
+                <source>user.create</source>
+                <target>Créer l'utilisateur</target>
+            </trans-unit>
+            <trans-unit id="label.visible">
+                <source>label.visible</source>
+                <target>Article visible uniquement par les administrateurs</target>
             </trans-unit>
         </body>
     </file>
