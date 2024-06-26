@@ -103,6 +103,7 @@ class BlogControllerTest extends WebTestCase
             'post[title]' => $postTitle,
             'post[summary]' => $postSummary,
             'post[content]' => $postContent,
+            'post[isVisible]' => '1',
         ]);
 
         $this->assertResponseRedirects('/en/admin/post/', Response::HTTP_SEE_OTHER);
@@ -129,6 +130,7 @@ class BlogControllerTest extends WebTestCase
             'post[title]' => $postTitle,
             'post[summary]' => $postSummary,
             'post[content]' => $postContent,
+            'post[isVisible]' => '1',
         ]);
         $this->client->submit($form);
 
@@ -197,4 +199,19 @@ class BlogControllerTest extends WebTestCase
 
         return mb_substr(str_shuffle(str_repeat($chars, (int) ceil($length / mb_strlen($chars)))), 1, $length);
     }
+
+    public function testAccessDeniedForNonAdminUser(): void
+    {
+        /** @var UserRepository $userRepository */
+        $userRepository = $this->client->getContainer()->get(UserRepository::class);
+
+        /** @var User $user */
+        $user = $userRepository->findOneByUsername('john_user');
+        $this->client->loginUser($user);
+
+        $this->client->request('GET', '/en/admin/post/1');
+
+        $this->assertResponseStatusCodeSame(Response::HTTP_FORBIDDEN);
+    }
+
 }
