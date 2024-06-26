@@ -13,6 +13,7 @@ namespace App\Repository;
 
 use App\Entity\Post;
 use App\Entity\Tag;
+use App\Entity\User;
 use App\Pagination\Paginator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -39,7 +40,7 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    public function findLatest(int $page = 1, ?Tag $tag = null): Paginator
+    public function findLatest(int $page = 1, ?Tag $tag = null, ?User $user ): Paginator
     {
         $qb = $this->createQueryBuilder('p')
             ->addSelect('a', 't')
@@ -49,6 +50,10 @@ class PostRepository extends ServiceEntityRepository
             ->orderBy('p.publishedAt', 'DESC')
             ->setParameter('now', new \DateTimeImmutable())
         ;
+
+        if (null === $user || !in_array('ROLE_ADMIN', $user->getRoles())) {
+            $qb->andWhere('p.isVisible = 0');
+        }
 
         if (null !== $tag) {
             $qb->andWhere(':tag MEMBER OF p.tags')

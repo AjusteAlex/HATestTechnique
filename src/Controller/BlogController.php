@@ -57,7 +57,7 @@ final class BlogController extends AbstractController
             $tag = $tags->findOneBy(['name' => $request->query->get('tag')]);
         }
 
-        $latestPosts = $posts->findLatest($page, $tag);
+        $latestPosts = $posts->findLatest($page, $tag, $this->getUser());
 
         // Every template name also has two extensions that specify the format and
         // engine for that template.
@@ -93,6 +93,12 @@ final class BlogController extends AbstractController
         //
         // You can also leverage Symfony's 'dd()' function that dumps and
         // stops the execution
+
+        if ($post->getIsVisible() == 1 && !$this->isGranted('ROLE_ADMIN')) {
+
+                throw $this->createNotFoundException('Post non visible');
+
+        }
 
         return $this->render('blog/post_show.html.twig', ['post' => $post]);
     }

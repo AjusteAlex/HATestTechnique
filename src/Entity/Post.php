@@ -65,6 +65,9 @@ class Post
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 
+    #[ORM\Column(type: Types::BOOLEAN)]
+    private ?bool $isVisible = null;
+
     /**
      * @var Collection<int, Comment>
      */
@@ -195,5 +198,15 @@ class Post
     public function getTags(): Collection
     {
         return $this->tags;
+    }
+
+    public function getIsVisible(): ?bool
+    {
+        return $this->isVisible;
+    }
+
+    public function setIsVisible(?bool $isVisible): void
+    {
+        $this->isVisible = $isVisible;
     }
 }
