@@ -77,6 +77,7 @@ final class AppFixtures extends Fixture
             $post->setPublishedAt($publishedAt);
             $post->setAuthor($author);
             $post->addTag(...$tags);
+            $post->setIsVisible(true);
 
             foreach (range(1, 5) as $i) {
                 /** @var User $commentAuthor */
